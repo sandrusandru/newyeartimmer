@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CountDown Timmer</title>
+</head>
+<body>
+    <p>CountDown Started</p><br>
+    <h2 >Happy New Year</h2><br>
+    <div class="container">
+        <div class="box">
+            <h2 id="days">00</h2>
+            <small>Days</small>
+        </div>
+        <div class="box">
+            <h2 id="hours">00</h2>
+                <small>Hours</small>
+        </div>
+        <div class="box">
+            <h2 id="mintues">00</h2>
+            <small>min</small>
+        </div>
+        <div class="box">
+            <h2 id="seconds">00</h2>
+            <small>Sec</small>
+        </div>
+    </div>
+    <script>
+        const days=document.querySelector('#days')
+        const hours=document.querySelector('#hours')
+        const mintues=document.querySelector('#mintues')
+        const seconds=document.querySelector('#seconds')
+
+        function updateTime(){
+        const currentyear=new Date().getFullYear();
+        const newTime=new Date(`${currentyear+1}` )
+
+        const currentDate=new Date();
+        const diff=newTime-currentDate;
+        const d=Math.floor(diff/1000/60/60/24);
+        const h=Math.floor((diff/1000/60/60)%24);
+        const m=Math.floor((diff/1000/60)%60);
+        const s=Math.floor((diff/1000)%60);
+        days.innerHTML=d;
+        hours.innerHTML=h;
+        mintues.innerHTML=m;
+        seconds.innerHTML=s
+        
+        }
+    
+   setInterval(updateTime,1000);
+        
+    </script>
+    
+</body>
+</html>
+<style>
+    
+
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        width: 100vw;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        font-family: 'Capriola', sans-serif;
+        background:linear-gradient(rgb(0,0,0,0.5),rgb(0,0,0,0.5)),url('../JavaScript/pexels.jpg') ;
+        color: white;
+        background-size: cover;
+
+      /*  
+        font-family: 'DM Serif Display', serif;
+        font-family: 'Macondo', cursive;
+        font-family: 'Prompt', sans-serif;
+                font-family: 'Agdasima', sans-serif;
+
+        */
+    }
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    .box{
+        padding: 10px;
+    }
+</style>
